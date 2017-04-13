@@ -13,13 +13,18 @@ distance (Point x1 y1) (Point x2 y2) = sqrt ( (x1 - x2) ^ 2 + (y1 - y2) ^ 2 )
 
 
 
-data Result' = Success' | Fail' Int
+data Bit = Zero | One deriving (Show)
+data Sign = Minus | Plus deriving (Show)
+data Z = Z Sign [Bit] deriving (Show)
 
-instance Show Result' where
-    show Success' = "Success"
-    show (Fail' n) = "Fail: " ++ show n
+add :: Z -> Z -> Z
+add x y = intToZ (zToInt x + zToInt y)
 
-doSomeWork' :: SomeData -> Result'
-doSomeWork' a | err == 0 = Success'
-              | otherwise = Fail' err
-              where err = snd (doSomeWork a)
+mul :: Z -> Z -> Z
+mul x y = intToZ (zToInt x * zToInt y)
+
+intToZ :: Integer -> Z
+intToZ = undefined
+
+zToInt :: Z -> Integer
+zToInt = undefined
