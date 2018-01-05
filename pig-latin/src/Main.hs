@@ -1,4 +1,6 @@
 module Main where
 
+import Tests
+
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = mapM_ putStrLn runTests
